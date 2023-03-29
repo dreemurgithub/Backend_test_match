@@ -12,6 +12,8 @@ App demo sẽ không có chức năng check UID từ Firebase có trùng với U
 Sử dụng Mongodb để store các Session sau khi đăng nhập từ Firebase UID
 ### Chỉ nhận fetch từ Client trên fir-match-making.web.app
 Dùng origin ở trên, với middleware đơn giản
+
+...
 app.use((req, res, next) => {
     if (origin.includes(req.get('origin'))) {
         app.set('trust proxy', 1)
@@ -20,3 +22,4 @@ app.use((req, res, next) => {
         next()
     }
 });
+...
