@@ -27,3 +27,6 @@ app.use((req, res, next) => {
 ```
 ## Khác
 ### Client github tại https://github.com/dreemurgithub/Demo_match_app
+
+### Cách lưu từ Client mà không bị xung đột với các Client khác
+Mỗi Client sẽ xử lý tầm 6-8 người chơi, tức là 6-8 key trong hashmap từ danh sách người chơi. Mỗi lệnh update vào với put request lên /write_json/edit sẽ chỉ thay đổi đúng key mà Client đang xử lí. Ví dụ có 16 cặp đấu(32 người chơi) và 4 Client xử lí 4 cặp(8 người), Client 1 sẽ xử lí key 0 tới 7, Client 2 xử lí từ 8 tới 15, Client 3 sẽ xử lí từ 16 tới 23 và Client 4 xử lí từ 24 tới 31. Như vậy mỗi lần thay đổi sẽ chỉ edit đúng key trong hashmap, không ảnh hưởng các key khác(của Client khác)
